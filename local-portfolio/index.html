@@ -47,7 +47,131 @@ main,.footer{position:relative;z-index:2}.inner{width:min(1120px,calc(100% - 56p
 .name-intro:before{position:absolute;left:0;top:-2px;width:84px;height:84px;border:1px solid rgba(133,225,255,.48);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;content:"";animation:steady-spin 5.6s linear infinite}.name-intro:after{position:absolute;left:75px;top:39px;width:5px;height:5px;border-radius:50%;background:#e5fcff;content:"";transform-origin:-27px 2px;animation:steady-spin 3.8s linear infinite}.intro-orbit{animation:steady-spin 8s linear infinite}.intro-orbit:before{animation:steady-spin 5.4s linear infinite reverse}.intro-orbit:after{animation:steady-spin 3.3s linear infinite}.intro-core{animation:core-throb 1.8s ease-in-out 1s infinite}.intro-beam{animation:beam-revolve 4.2s linear 1s infinite}.intro-spark{opacity:.9;animation:spark-glint 2.1s ease-in-out infinite}.spark-a{animation-delay:0s}.spark-b{animation-delay:.7s}.spark-c{animation-delay:1.4s}@keyframes steady-spin{to{transform:rotate(360deg)}}@keyframes core-throb{0%,100%{transform:scale(.78);opacity:.75}50%{transform:scale(1.28);opacity:1}}@keyframes beam-revolve{0%{transform:rotate(0deg) scaleX(.35);opacity:.55}50%{transform:rotate(180deg) scaleX(1);opacity:1}100%{transform:rotate(360deg) scaleX(.35);opacity:.55}}@keyframes spark-glint{0%,100%{opacity:.2;transform:scale(.55)}50%{opacity:1;transform:scale(1.4)}}
 @media(prefers-reduced-motion:reduce){.name-intro:before,.name-intro:after,.intro-orbit,.intro-orbit:before,.intro-orbit:after,.intro-core,.intro-beam,.intro-spark{animation:none!important}}
 .footbottom .copyright{font-size:10px;font-weight:800}
-</style></head><body><div class="bg" aria-hidden="true"><canvas id="portrait"></canvas><span class="particles"></span></div>
+
+/* Responsive refinements for tablets and touch screens. */
+html{scroll-padding-top:calc(74px + env(safe-area-inset-top,0px))}
+.header{top:calc(8px + env(safe-area-inset-top,0px));width:calc(100% - 24px);min-height:54px;padding-inline:14px}
+.nav a,.footnav a{min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.btn,.menu,.whatsapp-float{touch-action:manipulation}
+
+@media (min-width:761px) and (max-width:900px){
+  .header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .brand{grid-column:1;grid-row:1;font-size:10px}
+  .menu{grid-column:2;grid-row:1;display:block;min-width:68px;min-height:40px;font-size:10px}
+  .header .nav{position:absolute;top:calc(100% + 7px);left:0;right:0;display:none;max-height:calc(100dvh - 94px);overflow:auto;padding:10px;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;border:1px solid rgba(211,235,255,.3);border-radius:14px;background:rgba(8,27,52,.97);backdrop-filter:blur(16px);font-size:10px}
+  .header .nav.open{display:grid}
+  .header .nav a{min-height:42px;padding:9px 7px;justify-content:flex-start;font-size:10px}
+  .inner{width:calc(100% - 48px)}
+  .section{padding:100px 0 56px;scroll-margin-top:78px}
+  #home{padding-top:104px}
+  .hero{grid-template-columns:minmax(0,1.15fr) minmax(180px,.7fr);gap:12px}
+  .hero h1{font-size:clamp(52px,7.5vw,72px)}
+  .hero-card{padding-inline:18px}
+  .hero-art{min-height:210px}
+  .hero-orbit{width:min(23vw,190px)}
+  .aboutgrid{grid-template-columns:minmax(0,1fr) 145px;gap:18px}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pbody{padding:16px}
+  .pbody h3{font-size:clamp(18px,2.4vw,22px)}
+  .strengthgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hobbies{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .hobby{min-width:0;padding:12px 8px}
+  .hobby b{font-size:12px}
+  .langrow{flex-direction:row}
+  .foot-top{align-items:flex-start}
+  .footnav{display:flex;flex-wrap:wrap;gap:2px}
+  .footbottom{flex-wrap:wrap;gap:9px 16px;line-height:1.6}
+}
+
+@media (max-width:760px){
+  html{scroll-padding-top:calc(68px + env(safe-area-inset-top,0px))}
+  .inner{width:calc(100% - 32px)}
+  .header{top:calc(6px + env(safe-area-inset-top,0px));width:calc(100% - 16px);min-height:52px;padding:5px 10px;border-radius:13px}
+  .brand{gap:8px;font-size:10px;letter-spacing:.08em}
+  .mark{width:22px;height:22px}
+  .menu{display:block;min-width:64px;min-height:42px;padding:8px 10px;font-size:10px}
+  .header .nav{left:0;right:0;top:calc(100% + 7px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:9px}
+  .header .nav.open{display:grid}
+  .header .nav a{min-height:44px;padding:10px 9px;justify-content:flex-start;font-size:11px}
+  .section{min-height:100svh;min-height:100dvh;padding:88px 0 calc(46px + env(safe-area-inset-bottom,0px));scroll-margin-top:70px}
+  #home{padding-top:calc(86px + env(safe-area-inset-top,0px))}
+  .hero{grid-template-columns:minmax(0,1fr);gap:8px}
+  .hero-card{max-width:none;padding:10px 2px}
+  .hero h1{max-width:100%;margin-top:16px;font-size:clamp(42px,12.5vw,68px);line-height:.94;overflow-wrap:anywhere}
+  .hero .copy,.intro,.pbody p,.pbody ul,.edu p,.foundation,.note{font-size:15px;line-height:1.7}
+  .role{font-size:16px;line-height:1.5}
+  .actions{gap:9px;margin-top:20px}
+  .btn{min-height:46px;padding:0 14px;font-size:10px}
+  .stats{gap:14px 18px;font-size:11px}
+  .hero-art{display:grid;min-height:135px;opacity:.58}
+  .hero-orbit{width:125px}
+  .art-label{font-size:9px}
+  .art-label b{font-size:26px}
+  .scroll{display:none}
+  .title{font-size:clamp(36px,10.5vw,56px);line-height:1.02;overflow-wrap:anywhere}
+  .eyebrow,.kicker{font-size:10px;letter-spacing:.12em}
+  .intro{margin-top:13px}
+  .about,.skills,.marketing,.strengths,.interests,.languages{padding:22px 18px;border-radius:17px}
+  .aboutgrid,.edurow,.marketingrow,.contactrow{grid-template-columns:minmax(0,1fr);gap:16px}
+  .stamp{min-height:112px}
+  .stamp:before{width:108px}
+  .stamp:after{width:78px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:18px}
+  .skill{min-width:0;min-height:96px;padding:12px 10px}
+  .skill b{font-size:12px;line-height:1.35;overflow-wrap:anywhere}
+  .skill .code{font-size:9px}
+  .projects{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:18px}
+  .project{min-width:0}
+  .cover{min-height:150px;padding:15px}
+  .pbody{padding:16px}
+  .pbody h3{font-size:20px;line-height:1.2;overflow-wrap:anywhere}
+  .pbody ul{padding-left:20px}
+  .tag{font-size:10px;line-height:1.35}
+  #education .edu{padding:16px}
+  .timeline{padding-left:22px}
+  .strengthgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .strength{min-width:0;padding:12px 10px;font-size:12px;line-height:1.35;overflow-wrap:anywhere}
+  .hobbies{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .hobby{min-width:0;min-height:100px;padding:13px 10px}
+  .hobby:last-child{grid-column:1/-1}
+  .hobby b{font-size:12px;line-height:1.35}
+  .radar{min-height:145px}
+  .radar:before{width:130px}
+  .radar:after{width:88px}
+  .chip{max-width:100%;font-size:12px;line-height:1.35;white-space:normal}
+  .langrow{flex-direction:column;gap:9px}
+  .lang{min-width:0;padding:14px}
+  .contactlink{min-width:0;padding:13px 14px;font-size:14px;overflow-wrap:anywhere}
+  .whatsapp-note{font-size:13px;line-height:1.55}
+  .footer{padding:23px 0 calc(22px + env(safe-area-inset-bottom,0px))}
+  .foot-top{align-items:flex-start;flex-direction:column;gap:12px}
+  .footnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:3px}
+  .footnav a{justify-content:flex-start;min-height:42px;padding:9px 8px;font-size:11px}
+  .footbottom{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:14px;padding-top:12px;font-size:9px;line-height:1.5}
+  .footbottom .copyright{font-size:10px}
+  .counter{left:8px;bottom:6px;font-size:8px}
+  .whatsapp-float{right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));width:50px;height:50px}
+  .whatsapp-float:after{display:none}
+}
+
+@media (max-width:390px){
+  .inner{width:calc(100% - 26px)}
+  .header{width:calc(100% - 12px);padding-inline:8px}
+  .brand{font-size:9px;gap:7px}
+  .brand .mark{width:20px;height:20px}
+  .hero h1{font-size:clamp(39px,12vw,48px)}
+  .actions{display:grid;grid-template-columns:1fr 1fr}
+  .btn{width:100%;padding-inline:8px;font-size:9px}
+  .grid{gap:7px}
+  .skill{padding:10px 8px}
+  .skill b{font-size:11px}
+  .about,.skills,.marketing,.strengths,.interests,.languages{padding-inline:15px}
+  .title{font-size:clamp(34px,10vw,42px)}
+  .footbottom{font-size:8px}
+}
+
+@media (hover:none){.btn:hover,.whatsapp-float:hover{transform:none}.nav a:hover,.footnav a:hover{background:transparent;border-color:transparent}}</style></head><body><div class="bg" aria-hidden="true"><canvas id="portrait"></canvas><span class="particles"></span></div>
 <header class="header"><a class="brand" href="#home" aria-label="Ayaan Khan, home"><span class="mark"><i class="orbit"></i></span><span>AYAAN KHAN</span><span class="slash">/</span><span class="brand-small">PORTFOLIO</span></a><button class="menu" type="button" aria-expanded="false" aria-controls="nav">MENU</button><nav class="nav" id="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#marketing">Marketing</a><a href="#strengths">Strengths</a><a href="#interests">Interests</a><a href="#languages">Languages</a><a href="#contact">Contact</a></nav></header><main>
 <section class="section" id="home"><div class="inner hero"><div class="hero-card reveal"><p class="kicker"><i class="dot"></i>College student · Digital &amp; web</p><div class="name-intro" aria-hidden="true"><span class="intro-orbit"></span><span class="intro-core"></span><span class="intro-beam"></span><i class="intro-spark spark-a"></i><i class="intro-spark spark-b"></i><i class="intro-spark spark-c"></i><span class="intro-caption">IDENTITY SIGNAL / 01</span></div><h1>Hi, I'm <span>Ayaan Khan</span></h1><p class="role">Digital Marketing Enthusiast <span>|</span> WordPress Developer <span>|</span> AI Website Creator</p><p class="copy">I create animated and non-animated websites with AI applications and build e-commerce experiences with WordPress. I’m motivated to gain practical experience, keep learning, and contribute to an organization.</p><div class="actions"><a class="btn" href="#projects">Explore my work ↘</a><a class="btn alt" href="#contact">Contact me ↗</a></div><div class="stats"><span><b>BBA · 2028</b>Jamia Millia Islamia</span><span><b>AI + WORDPRESS</b>Website creation</span><span><b>DELHI, INDIA</b>Based in</span></div></div><div class="hero-art reveal" style="--d:180ms" aria-hidden="true"><div class="hero-orbit"><i class="node"></i></div><div class="art-label"><b>AK / 01</b>Ideas into experiences</div></div></div><a class="scroll" href="#about">SCROLL TO EXPLORE</a></section>
 <section class="section" id="about"><div class="inner glass about reveal"><div class="aboutgrid"><div><p class="eyebrow">01 / About me</p><h2 class="title">A student who <span>builds.</span></h2><p class="intro">I’m pursuing a Bachelor of Business Administration at Jamia Millia Islamia, with an expected graduation in 2028. Alongside my studies, I’ve gained practical experience creating animated and non-animated websites using AI applications and developing e-commerce websites with WordPress.</p><p class="intro">I’m a quick learner with a creative approach, a positive attitude, and a genuine interest in modern tools and technologies. I’m looking for opportunities to grow my professional skills through hands-on experience.</p><div class="actions"><a class="btn alt" href="#education">View education ↘</a></div></div><div class="stamp"><div><b>LEARN<br>BUILD<br>IMPROVE</b><br>ONE STEP AT A TIME</div></div></div></div></section>
